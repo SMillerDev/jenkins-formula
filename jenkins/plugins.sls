@@ -1,6 +1,7 @@
 include:
   - jenkins
   - jenkins.cli
+  - jenkins.config
 
 {% from "jenkins/map.jinja" import jenkins with context %}
 

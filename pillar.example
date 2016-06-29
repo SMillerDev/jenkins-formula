@@ -1,13 +1,20 @@
 jenkins:
-  lookup:
-    port: 80
-    home: /var/lib/jenkins
-    user: jenkins
-    group: www-data
-    server_name: localhost
-    master_url: http://localhost:8080
-    plugins:
-      installed:
-        - greenballs
-    pkgs:
-      - jenkins
+  port: 80
+  home: /var/lib/jenkins
+  rc-release: False
+  user: jenkins
+  group: jenkins
+  master_url: http://localhost:80
+  config:
+    - jenkins_port: 80
+  plugins:
+    installed:
+      - greenballs
+  pkgs:
+    - jenkins
+{% if grains['os_family'] == 'RedHat' %}
+    - dejavu-sans-fonts
+    - fontconfig
+{% elif grains['os_family'] == 'Debian' %}
+    - ttf-dejavu
+{% endif %}

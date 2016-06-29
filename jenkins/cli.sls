@@ -13,7 +13,7 @@ jenkins_listening:
   pkg.installed:
     - name: {{ jenkins.netcat_pkg }}
   cmd.wait:
-    - name: "until nc -z localhost {{ jenkins.jenkins_port }}; do sleep 1; done"
+    - name: "until nc -z localhost {{ jenkins.port }}; do sleep 1; done"
     - timeout: 10
     - require:
       - service: jenkins

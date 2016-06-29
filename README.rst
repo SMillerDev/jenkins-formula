@@ -12,12 +12,20 @@ Available states
 
 Install jenkins from the source package repositories and start it up.
 
-``jenkins.nginx``
------------------
+``jenkins.config``
+-----------
 
-Add a jenkins nginx entry. It depends on the nginx formula being installed and
-requires manual inclusion `nginx` and `jenkins` states in your `top.sls` to
-function, in this order: `jenkins`, `nginx`, `jenkins.nginx`.
+Set jenkins config from the pillar file
+
+``jenkins.plugins``
+-----------
+
+Set jenkins plugins from the pillar file
+
+``jenkins.jobs``
+-----------
+
+Set jenkins jobs from the pillar file
 
 Pillar customizations:
 ==========================
@@ -25,9 +33,7 @@ Pillar customizations:
 .. code-block:: yaml
 
     jenkins:
-      lookup:
-        port: 80
-        home: /usr/local/jenkins
-        user: jenkins
-        group: www-data
-        server_name: ci.example.com
+      port: 80
+      home: /usr/local/jenkins
+      user: jenkins
+      group: www-data
